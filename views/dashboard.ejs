@@ -1,0 +1,100 @@
+<%- include('partials/header'); %>
+  
+    <div class="row ">
+      <canvas id="myChart" width="400" height="400"></canvas>
+    </div>
+    
+
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <script>
+          let ctx = document.getElementById('myChart').getContext('2d');
+          let assigneesArray ='<%= assignees%>'.split(',');
+          let dataset = '<%= totalHoursAssigned%>'.split(',');
+          var myChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+              labels: assigneesArray,
+              datasets: [{
+                  data: dataset,
+                  backgroundColor: [
+                      'rgba(255, 99, 132, 0.2)',
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(255, 206, 86, 0.2)',
+                      'rgba(75, 192, 192, 0.2)',
+                      'rgba(153, 102, 255, 0.2)',
+                      'rgba(255, 159, 64, 0.2)'
+                  ],
+                  borderColor: [
+                      'rgba(255, 99, 132, 1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(255, 206, 86, 1)',
+                      'rgba(75, 192, 192, 1)',
+                      'rgba(153, 102, 255, 1)',
+                      'rgba(255, 159, 64, 1)'
+                  ],
+                  borderWidth: 1
+              }]
+          },
+          options: {
+            indexAxis: 'y',
+            plugins: {
+              title: {
+                  display: true,
+                  text: 'No of hours worked'
+                },
+                legend: {
+                  display: false
+    }
+                },
+            responsive: false,
+              scales: {
+                  y: {
+                      beginAtZero: true
+                  }
+              }
+          }
+      });
+         
+      </script>
+      </div>
+  
+      <div class="row">
+        <h3>List of tickets</h3>
+  
+          <div class="table-responsive">
+              <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Assignee</th>
+                  <th scope="col">Total Hours Assigned</th>
+                  <th scope="col">Hours Worked</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% let counter=1 %>
+                <% tickets.forEach(function (ticket) { %>
+                  <tr>
+                    <th scope="row"><%=counter%></th>
+                    <td><%=ticket.title%></td>
+                    <td><%=ticket.assignee%></td>
+                    <td><%=ticket.totalHours%></td>
+                    <td><%=ticket.hoursWorked%></td>
+                    <td><button type="button" class="btn btn-primary">Edit</button></td>
+                    <% counter++%>
+                  </tr>
+              <% }) %>
+  
+              </tbody>
+            </table>
+      </div>
+  
+
+
+    </div>
+
+
+<%- include('partials/footer'); %> 

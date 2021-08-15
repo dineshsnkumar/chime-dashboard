@@ -1,0 +1,38 @@
+<%- include('partials/header'); %> 
+
+<form action="/addTicket" method="POST">
+    <div class="form-row">
+      <div class="form-group col-lg-6">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" name="title" placeholder="Title">
+      </div>
+      <div class="form-group col-lg-6">
+        <label for="title">Status</label>
+        <input type="text" class="form-control" name="status" placeholder="Status">
+       </div>
+      <div class="form-group col-lg-6 ">
+        <label for="assignee">Assignee</label>
+        <input type="text" class="form-control" name="assignee" placeholder="Assignee">
+      </div>
+      <div class="form-group col-lg-6">
+        <label for="label">Label</label>
+        <input type="text" class="form-control" name="label" placeholder="Bug/Documentation/Enhancement">
+      </div>
+      <div class="form-group col-lg-6 ">
+        <label for="totalHours">Total Hours Assigned</label>
+        <input type="text" class="form-control" name="totalHours" placeholder="Total Hours">
+      </div>
+      <div class="form-group col-lg-6">
+        <label for="hoursWorked">Hours Worked</label>
+        <input type="text" class="form-control" name="hoursWorked" placeholder="Hours Worked">
+      </div>
+      <div class="form-group col-lg-12">
+        <label for="issue">Issue</label>
+        <textarea class="form-control" name="issue" rows="3"></textarea>
+      </div>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+<%- include('partials/footer') %> 
